@@ -52,6 +52,6 @@ prepare:
     message: "new app version: ${nextRelease.version}"
     assets:
       - "deployment/helm-chart/Chart.yaml"
-publish: "@semantic-release/github"
+#publish: "@semantic-release/github"
 success: false
 fail: false
