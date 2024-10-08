@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} created PR 🚀
 on: [pull_request]
 
 jobs:
-  PR:
+  pull-request:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code

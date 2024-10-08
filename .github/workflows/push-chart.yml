@@ -1,4 +1,4 @@
-name: Push
+name: PushChart
 run-name: ${{ github.actor }} pushed chart updates
 on: 
   push:

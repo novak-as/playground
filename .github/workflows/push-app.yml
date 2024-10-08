@@ -1,4 +1,4 @@
-name: Push
+name: PushApp
 run-name: ${{ github.actor }} pushed app updates
 on: 
   push:
