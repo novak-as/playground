@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - 'main'  
-    paths-ignore:
-      - '.github/**'
-      - 'deployment/**'
+    paths:
+      - 'deployment/cmd/**'
+      - 'deployment/internal/**'
+
 jobs:
   push-app:
     runs-on: ubuntu-latest
