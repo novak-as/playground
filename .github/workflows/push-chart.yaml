@@ -17,9 +17,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
         with: 
-          working_directory: deployment
           extra_plugins: |
             @semantic-release/git
             @semantic-release/exec
             @semantic-release/changelog
             @google/semantic-release-replace-plugin
+          working_directory: deployment

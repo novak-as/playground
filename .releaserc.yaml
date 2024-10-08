@@ -1,4 +1,4 @@
-tagFormat: v${version}
+tagFormat: app-v${version}
 branches:
   - main
 plugins:
