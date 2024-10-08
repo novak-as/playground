@@ -1,6 +1,6 @@
-name: Push
-run-name: ${{ github.actor }} pushed 🚀
-on: [push]
+name: Release
+run-name: ${{ github.actor }} created release 🚀
+on: [release]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
