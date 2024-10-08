@@ -1,0 +1,57 @@
+tagFormat: v${version}
+branches:
+  - main
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - "@semantic-release/release-notes-generator"
+  - "@semantic-release/github"
+  - "@google/semantic-release-replace-plugin"
+  
+verifyConditions: "@semantic-release/github"
+analyzeCommits: "@semantic-release/commit-analyzer"
+generateNotes:
+  - path: "@semantic-release/release-notes-generator"
+    writerOpts:
+      groupBy: "type"
+      commitGroupsSort:
+        - "feat"
+        - "perf"
+        - "fix"
+      commitsSort: "header"
+    types:
+      - type: "feat"
+      - section: "Features"
+      - type: "hotfix"
+      - section: "Bug Fixes"
+      - type: "fix"
+      - hidden: true
+      - type: "chore"
+      - hidden: true
+      - type: "docs"
+      - hidden: true
+      - type: "doc"
+      - hidden: true
+      - type: "style"
+      - hidden: true
+      - type: "refactor"
+      - hidden: true
+      - type: "perf"
+      - hidden: true
+      - type: "test"
+      - hidden: true
+    presetConfig: true
+prepare:
+  - - "@google/semantic-release-replace-plugin"
+    - replacements:
+        - files: "deployment/helm-chart/Chart.yaml"
+          allowEmptyPaths: false
+          disableGlobs: false
+          from: "^appVersion: .*"
+          to: "appVersion: ${nextRelease.version}"
+  - path: "@semantic-release/git"
+    message: "Release new version: ${nextRelease.version} [skip ci]"
+    assets:
+      - "deployment/helm-chart/Chart.yaml"
+publish: "@semantic-release/github"
+success: false
+fail: false

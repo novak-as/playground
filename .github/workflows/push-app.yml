@@ -1,0 +1,16 @@
+name: Push
+run-name: ${{ github.actor }} pushed app updates
+on: 
+  push:
+    paths-ignore:
+      - .github/**
+      - deployment/**
+jobs:
+  push-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
