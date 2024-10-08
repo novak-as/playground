@@ -49,7 +49,7 @@ prepare:
           from: "^version: .*"
           to: "version: ${nextRelease.version}"
   - path: "@semantic-release/git"
-    message: "new chart version: ${nextRelease.version}"
+    message: "bump chart version: ${nextRelease.version}"
     assets:
       - "helm-chart/Chart.yaml"
 publish: "@semantic-release/github"
