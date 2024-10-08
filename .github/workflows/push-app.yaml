@@ -2,15 +2,19 @@ name: PushApp
 run-name: ${{ github.actor }} pushed app updates
 on: 
   push:
+    branches:
+      - 'main'  
     paths-ignore:
-      - .github/**
-      - deployment/**
+      - '.github/**'
+      - 'deployment/**'
 jobs:
   push-app:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4

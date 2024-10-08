@@ -2,8 +2,10 @@ name: PushChart
 run-name: ${{ github.actor }} pushed chart updates
 on: 
   push:
+    branches:
+      - 'main'  
     paths:
-      - deployment/helm-chart/**
+      - 'deployment/helm-chart/**'
 
 jobs:
   push-chart:
@@ -11,6 +13,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
