@@ -9,7 +9,7 @@ plugins:
 verifyConditions: "@semantic-release/github"
 analyzeCommits: 
   - path: "@semantic-release/commit-analyzer"
-    preset: conventionalcommits
+    preset: angular
     releaseRules:
       - type: fix(app)
         release: patch
@@ -19,7 +19,7 @@ analyzeCommits:
         release: major
 generateNotes:
   - path: "@semantic-release/release-notes-generator"
-    preset: conventionalcommits
+    preset: angular
 prepare:
   - - "@google/semantic-release-replace-plugin"
     - replacements:
