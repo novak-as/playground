@@ -5,41 +5,21 @@ plugins:
   - "@semantic-release/commit-analyzer"
   - "@semantic-release/release-notes-generator"
   - "@semantic-release/github"
-  - "@google/semantic-release-replace-plugin"
-  
+  - "@google/semantic-release-replace-plugin"  
 verifyConditions: "@semantic-release/github"
-analyzeCommits: "@semantic-release/commit-analyzer"
+analyzeCommits: 
+  - path: "@semantic-release/commit-analyzer"
+    preset: conventionalcommits
+    releaseRules:
+      - type: fix(app)
+        release: patch
+      - type: feat(app)
+        release: minor
+      - type: feat(app)!
+        release: major
 generateNotes:
   - path: "@semantic-release/release-notes-generator"
-    writerOpts:
-      groupBy: "type"
-      commitGroupsSort:
-        - "feat"
-        - "perf"
-        - "fix"
-      commitsSort: "header"
-    types:
-      - type: "feat"
-      - section: "Features"
-      - type: "hotfix"
-      - section: "Bug Fixes"
-      - type: "fix"
-      - hidden: true
-      - type: "chore"
-      - hidden: true
-      - type: "docs"
-      - hidden: true
-      - type: "doc"
-      - hidden: true
-      - type: "style"
-      - hidden: true
-      - type: "refactor"
-      - hidden: true
-      - type: "perf"
-      - hidden: true
-      - type: "test"
-      - hidden: true
-    presetConfig: true
+    preset: conventionalcommits
 prepare:
   - - "@google/semantic-release-replace-plugin"
     - replacements:
