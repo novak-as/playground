@@ -2,14 +2,14 @@ tagFormat: app-v${version}
 verifyConditions: "@semantic-release/github"
 analyzeCommits: 
   - path: "@semantic-release/commit-analyzer"
-    preset: conventionalcommits
+  - preset: conventionalcommits
     releaseRules:
-      - type: fix-app
-        release: patch
-      - type: feat-app
-        release: minor
-      - type: feat-app!
-        release: major
+    - type: fix-app
+      release: patch        
+    - type: feat-app
+      release: minor
+    - type: feat-app!
+      release: major
 generateNotes:
   - path: "@semantic-release/release-notes-generator"
     preset: conventionalcommits
