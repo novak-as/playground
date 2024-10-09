@@ -1,3 +1,3 @@
 rbac:
   serviceAccountName: playground
-  foo: bars
+  foo: barss

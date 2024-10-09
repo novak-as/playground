@@ -6,9 +6,8 @@ on:
       - 'main'  
     paths:
       - 'deployment/helm-chart/**'
-    paths-ignore:
-      - 'cmd/**'
-      - 'internal/**'
+      - '!cmd/**'
+      - '!internal/**'
 
 jobs:
   push-chart:
