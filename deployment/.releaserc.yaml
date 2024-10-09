@@ -1,4 +1,4 @@
-tagFormat: app-v${version}
+tagFormat: v${version}
 verifyConditions: "@semantic-release/github"
 analyzeCommits: 
   - path: "@semantic-release/commit-analyzer"
