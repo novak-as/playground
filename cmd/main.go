@@ -1,5 +1,5 @@
 package main
 
 func main() {
-	print("helsalsor orld!")
+	print("helsalsor o rld!")
 }

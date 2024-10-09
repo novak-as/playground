@@ -1,4 +1,4 @@
-tagFormat: app-v${version}
+tagFormat: v${version}
 
 plugins:
   - "@semantic-release/github"
@@ -21,9 +21,9 @@ plugins:
           allowEmptyPaths: false
           disableGlobs: false
           from: "^version: .*"
-          to: "version: ${nextRelease.version}"          
+          to: "version: ${nextRelease.version}"
 
   - - "@semantic-release/git"
-    - message: "bump app version: ${nextRelease.version}"
+    - message: "bump version: ${nextRelease.version}"
       assets:
         - "deployment/helm-chart/Chart.yaml"
