@@ -16,7 +16,7 @@ generateNotes:
 prepare:
   - - "@google/semantic-release-replace-plugin"
     - replacements:
-        - files: "helm-chart/Chart.yaml"
+        - files: "deployment/helm-chart/Chart.yaml"
           allowEmptyPaths: false
           disableGlobs: false
           from: "^appVersion: .*"
