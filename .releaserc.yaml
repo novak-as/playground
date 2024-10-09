@@ -4,21 +4,8 @@ plugins:
   - "@semantic-release/github"
 
   - - "@semantic-release/commit-analyzer"
-    - preset: conventionalcommits 
-      releaseRules:
-        - type: fix-app
-          release: patch        
-        - type: feat-app
-          release: minor
-        - type: feat-app!
-          release: major
-      presetConfig:
-        types:
-          - type: fix-app
-            section: Bug Fixes
-          - type: feat-app
-            section: Features          
-
+    - preset: conventionalcommits
+        
   - - "@semantic-release/release-notes-generator"
     - preset: conventionalcommits 
 
@@ -30,6 +17,11 @@ plugins:
           disableGlobs: false
           from: "^appVersion: .*"
           to: "appVersion: ${nextRelease.version}"
+        - files: "deployment/helm-chart/Chart.yaml"
+          allowEmptyPaths: false
+          disableGlobs: false
+          from: "^version: .*"
+          to: "version: ${nextRelease.version}"          
 
   - - "@semantic-release/git"
     - message: "bump app version: ${nextRelease.version}"

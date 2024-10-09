@@ -14,18 +14,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: dorny/paths-filter@v3
-        id: changes
-        with:
-          filters: |
-            app:
-              - 'cmd/**'
-              - 'internal/**'
-            chart:
-              - 'deployment/helm-chart/**'
-
-      - if: steps.changes.outputs.app == 'true'
-        name: Semantic Release
+      - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,18 +24,4 @@ jobs:
             @semantic-release/exec
             @semantic-release/changelog
             @google/semantic-release-replace-plugin
-            conventional-changelog-conventionalcommits
-
-      - if: ${{ steps.changes.outputs.app == 'true' || steps.changes.outputs.chart == 'true' }}
-        name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
-        with: 
-          extra_plugins: |
-            @semantic-release/git
-            @semantic-release/exec
-            @semantic-release/changelog
-            @google/semantic-release-replace-plugin
-            conventional-changelog-conventionalcommits
-          working_directory: deployment            
+            
