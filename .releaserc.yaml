@@ -4,11 +4,11 @@ analyzeCommits:
   - path: "@semantic-release/commit-analyzer"
     preset: conventionalcommits
     releaseRules:
-      - type: fix(chart)
+      - type: fix(app)
         release: patch
-      - type: feat(chart)
+      - type: feat(app)
         release: minor
-      - type: feat(chart)!
+      - type: feat(app)!
         release: major
 generateNotes:
   - path: "@semantic-release/release-notes-generator"
