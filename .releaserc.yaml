@@ -2,36 +2,15 @@ tagFormat: app-v${version}
 branches:
   - main
 plugins:
-  - "@semantic-release/commit-analyzer"
+  - - "@semantic-release/commit-analyzer"
+    - preset: conventionalcommits
+      releaseRules:
+        - type: fix(app)
+          release: patch
+        - type: feat(app)
+          release: minor
+        - type: feat(app)!
+          release: major
   - "@semantic-release/release-notes-generator"
   - "@semantic-release/github"
-  - "@google/semantic-release-replace-plugin"  
-verifyConditions: "@semantic-release/github"
-analyzeCommits: 
-  - path: "@semantic-release/commit-analyzer"
-    preset: angular
-    releaseRules:
-      - type: fix(app)
-        release: patch
-      - type: feat(app)
-        release: minor
-      - type: feat(app)!
-        release: major
-generateNotes:
-  - path: "@semantic-release/release-notes-generator"
-    preset: angular
-prepare:
-  - - "@google/semantic-release-replace-plugin"
-    - replacements:
-        - files: "deployment/helm-chart/Chart.yaml"
-          allowEmptyPaths: false
-          disableGlobs: false
-          from: "^appVersion: .*"
-          to: "appVersion: ${nextRelease.version}"
-  - path: "@semantic-release/git"
-    message: "bump app version: ${nextRelease.version}"
-    assets:
-      - "deployment/helm-chart/Chart.yaml"
-publish: "@semantic-release/github"
-success: false
-fail: false
+  - "@google/semantic-release-replace-plugin"

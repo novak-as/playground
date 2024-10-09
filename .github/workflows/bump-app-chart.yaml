@@ -24,7 +24,7 @@ jobs:
             chart:
               - 'deployment/helm-chart/**'
 
-      - if: steps.changes.outputs.app == 'true'
+      - #if: steps.changes.outputs.app == 'true'
         name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
         env:
@@ -36,15 +36,15 @@ jobs:
             @semantic-release/changelog
             @google/semantic-release-replace-plugin
 
-      - if: ${{ steps.changes.outputs.app == 'true' || steps.changes.outputs.chart == 'true' }}
-        name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
-        with: 
-          extra_plugins: |
-            @semantic-release/git
-            @semantic-release/exec
-            @semantic-release/changelog
-            @google/semantic-release-replace-plugin
-          working_directory: deployment            
+      # - if: ${{ steps.changes.outputs.app == 'true' || steps.changes.outputs.chart == 'true' }}
+      #   name: Semantic Release
+      #   uses: cycjimmy/semantic-release-action@v4
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
+      #   with: 
+      #     extra_plugins: |
+      #       @semantic-release/git
+      #       @semantic-release/exec
+      #       @semantic-release/changelog
+      #       @google/semantic-release-replace-plugin
+      #     working_directory: deployment            
