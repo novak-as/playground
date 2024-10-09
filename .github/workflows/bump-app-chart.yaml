@@ -35,7 +35,7 @@ jobs:
             @semantic-release/exec
             @semantic-release/changelog
             @google/semantic-release-replace-plugin
-            @conventional-changelog/conventional-changelog-conventionalcommits
+            conventional-changelog-conventionalcommits
 
       # - if: ${{ steps.changes.outputs.app == 'true' || steps.changes.outputs.chart == 'true' }}
       #   name: Semantic Release
