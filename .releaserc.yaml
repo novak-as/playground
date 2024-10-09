@@ -12,6 +12,12 @@ plugins:
           release: minor
         - type: feat-app!
           release: major
+      presetConfig:
+        types:
+          - type: fix-app
+            section: Bug Fixes
+          - type: feat-app
+            section: Features          
 
   - - "@semantic-release/release-notes-generator"
     - preset: conventionalcommits 
