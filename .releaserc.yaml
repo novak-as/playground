@@ -1,18 +1,21 @@
 tagFormat: app-v${version}
-preset: conventionalcommits
+
 plugins:
   - "@semantic-release/github"
 
   - - "@semantic-release/commit-analyzer"
-    - releaseRules:
-      - type: fix-app
-        release: patch        
-      - type: feat-app
-        release: minor
-      - type: feat-app!
-        release: major
+    - preset: conventionalcommits 
+      releaseRules:
+        - type: fix-app
+          release: patch        
+        - type: feat-app
+          release: minor
+        - type: feat-app!
+          release: major
 
-  - "@semantic-release/release-notes-generator"
+  - - "@semantic-release/release-notes-generator"
+    - preset: conventionalcommits 
+
   
   - - "@google/semantic-release-replace-plugin"
     - replacements:
