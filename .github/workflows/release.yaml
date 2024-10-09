@@ -24,4 +24,6 @@ jobs:
             @semantic-release/exec
             @semantic-release/changelog
             @google/semantic-release-replace-plugin
+            conventional-changelog-conventionalcommits
+            
             
