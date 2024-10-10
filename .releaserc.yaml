@@ -6,8 +6,8 @@ plugins:
   - - "@semantic-release/commit-analyzer"
     - preset: conventionalcommits
       releaseRules:
-        - type: chore
-          release: patch      
+        - type: chore(app)
+          release: patch
         
   - - "@semantic-release/release-notes-generator"
     - preset: conventionalcommits 
